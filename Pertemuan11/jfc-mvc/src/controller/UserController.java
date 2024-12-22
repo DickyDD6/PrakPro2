@@ -6,7 +6,6 @@ import javax.swing.*;
 import model.User;
 import model.UserMapper;
 import view.UserPdf;
-import view.UserView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
