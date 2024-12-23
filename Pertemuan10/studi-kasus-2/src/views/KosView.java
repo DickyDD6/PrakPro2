@@ -24,10 +24,10 @@ public class KosView extends JFrame{
     private void initialize() {
         frame = new JFrame("Aplikasi Kos");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
+        frame.setSize(1000, 600);
         frame.setLayout(new BorderLayout());
 
-        tableModel = new DefaultTableModel(new String[]{"ID", "Nama", "Alamat", "Harga", "Status"}, 0);
+        tableModel = new DefaultTableModel(new String[]{"ID", "Nama", "Harga", "Alamat"  ,"Status"}, 0);
         table = new JTable(tableModel);
         frame.add(new JScrollPane(table), BorderLayout.CENTER);
 
@@ -54,10 +54,10 @@ public class KosView extends JFrame{
                 JPanel inputPanel = new JPanel();
                 inputPanel.add(new JLabel("Nama:"));
                 inputPanel.add(txtNama);
-                inputPanel.add(new JLabel("Alamat:"));
-                inputPanel.add(txtAlamat);
                 inputPanel.add(new JLabel("Harga:"));
                 inputPanel.add(txtHarga);
+                inputPanel.add(new JLabel("Alamat:"));
+                inputPanel.add(txtAlamat);
                 inputPanel.add(new JLabel("Status:"));
                 inputPanel.add(cbStatus);
 
@@ -110,8 +110,8 @@ public class KosView extends JFrame{
                         Kos kos = new Kos();
                         kos.setId(id);
                         kos.setNama(txtNama.getText());
-                        kos.setAlamat(txtAlamat.getText());
                         kos.setHarga(Double.parseDouble(txtHarga.getText()));
+                        kos.setAlamat(txtAlamat.getText());
                         kos.setStatus((String) cbStatus.getSelectedItem());
 
                         KosController controller = new KosController(new KosView());
@@ -153,7 +153,7 @@ public class KosView extends JFrame{
             KosMapper mapper = session.getMapper(KosMapper.class);
             List<Kos> kosList = mapper.getAllKos();
             for (Kos kos : kosList) {
-                tableModel.addRow(new Object[]{kos.getId(), kos.getNama(), kos.getAlamat(), kos.getHarga(), kos.getStatus()});
+                tableModel.addRow(new Object[]{kos.getId(), kos.getNama(), kos.getHarga() ,kos.getAlamat(), kos.getStatus()});
             }
         }
     }
